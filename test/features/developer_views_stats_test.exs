@@ -31,13 +31,13 @@ defmodule Features.DeveloperViewsStatsTest do
 
     assert(
       session
-      |> find(Query.css(".stats_column header", text: "7 posts in 2 channels"))
+      |> find(Query.css(".stats_column header", text: "4 posts in 2 channels"))
     )
 
     channels = find(session, Query.css(".stats_column ul#channels"))
     [other_channel, phoenix_channel] = all(channels, Query.css("li"))
 
-    assert text_without_newlines(other_channel) =~ "#other 6 posts"
+    assert text_without_newlines(other_channel) =~ "#other 3 posts"
     assert text_without_newlines(phoenix_channel) =~ "#phoenix 1 post"
 
     session
